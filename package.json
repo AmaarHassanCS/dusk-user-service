@@ -1,0 +1,39 @@
+{
+  "name": "dusk-user-service",
+  "version": "1.0.0",
+  "description": "User service for dusk which deals with user registration via grpc interface",
+  "main": "server",
+  "scripts": {
+    "preinstall": "chmod +x ./npmrc.sh && sh npmrc.sh",
+    "postinstall": "npm i @amaarhassancs/dusk-protos@latest",
+    "start": "tsc --build && node dist/server.js",
+    "start:dev": "docker compose -f docker-compose-dev.yml up --build",
+    "compile": "tsc --build",
+    "compile:watch": "tsc --build --watch",
+    "pre:dev": "cross-env NODE_ENV=development nodemon --experimental-modules --es-module-specifier-resolution=node dist/index.js",
+    "dev": "concurrently --kill-others \"yarn compile:watch\" \"yarn pre:dev\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@amaarhassancs/dusk-protos": "^1.0.1",
+    "amqplib": "^0.10.4",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "http-status": "^1.7.4",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.3"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^22.4.0",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.4",
+    "typescript": "^5.5.4"
+  }
+}
