@@ -9,7 +9,11 @@ export class EventPublisher {
   private connection: amqp.Connection | null;
   private channel: amqp.Channel | null;
 
-  constructor(queueName, userServiceExchange, routingKey) {
+  constructor(
+    queueName: string,
+    userServiceExchange: string,
+    routingKey: string
+  ) {
     this.queueName = queueName;
     this.exchangeName = userServiceExchange;
     this.routingKey = routingKey;

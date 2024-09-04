@@ -23,6 +23,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+
   dev-database:
     container_name: dev-database
     image: mongo:latest
@@ -39,6 +40,7 @@ services:
     restart: unless-stopped
     networks:
       - backend
+
   dev-rabbitmq:
     container_name: dev-rabbitmq
     image: rabbitmq:latest
